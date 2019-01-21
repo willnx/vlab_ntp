@@ -11,3 +11,4 @@ services:
       - "123:123/udp"
     environment:
       - VLAB_NTP_SERVER=3.us.pool.ntp.org
+      - VLAB_TIMEZONE=America/Los_Angeles
