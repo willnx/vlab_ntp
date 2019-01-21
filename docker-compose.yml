@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ntp:
+    image:
+      willnx/vlab-ntp:latest
+    cap_add:
+      - SYS_TIME
+    restart:
+      unless-stopped
+    ports:
+      - "123:123/udp"
+    environment:
+      - VLAB_NTP_SERVER=3.us.pool.ntp.org
