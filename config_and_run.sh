@@ -14,6 +14,16 @@ update_ntp_server() {
   fi
 }
 
+update_ntp_client_network() {
+  if [ ! -z ${VLAB_NTP_CLIENT_NETWORK+x} ]; then
+    echo "Allowing NTP clients on network" ${VLAB_NTP_CLIENT_NETWORK}
+    local netwk=$(echo ${VLAB_NTP_CLIENT_NETWORK} | sed 's/\//\\\//g')
+    sed -i -e "s/allow 192.168.1.0\/24/allow ${netwk}/g" /etc/chrony/chrony.conf
+  else
+    echo "Allowing default network access to NTP client"
+  fi
+}
+
 update_timezone() {
   if [ ! -z ${VLAB_TIMEZONE+x} ]; then
     echo "Using timezone" ${VLAB_TIMEZONE}
@@ -35,6 +45,7 @@ run_chrony() {
 
 main() {
   update_ntp_server
+  update_ntp_client_network
   update_timezone
   run_chrony
 }

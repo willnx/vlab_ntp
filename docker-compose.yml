@@ -12,3 +12,4 @@ services:
     environment:
       - VLAB_NTP_SERVER=3.us.pool.ntp.org
       - VLAB_TIMEZONE=America/Los_Angeles
+      - VLAB_NTP_CLIENT_NETWORK=10.25.1.0/24
