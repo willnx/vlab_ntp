@@ -1,7 +1,7 @@
 FROM alpine:3.7
 
 RUN apk update && apk upgrade
-RUN apk add chrony
+RUN apk add chrony tzdata
 
 COPY chrony.conf /etc/chrony/
 COPY config_and_run.sh /usr/sbin

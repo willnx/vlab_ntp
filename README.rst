@@ -13,3 +13,4 @@ Environment Variables
 *********************
 
 - ``VLAB_NTP_SERVER`` - The NTP server to use for synchronizing time.
+- ``VLAB_TIMEZONE`` - The local timezone of the vLab server.
